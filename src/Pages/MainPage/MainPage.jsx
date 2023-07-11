@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 
 import { useMediaQuery } from 'react-responsive'
 
@@ -34,18 +34,18 @@ export default function MainPage() {
 
   const handleScrollRefer = (type) => {
 
-    switch(type){
+    switch (type) {
       case 'about-me':
-        aboutMeScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
+        aboutMeScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
         break;
       case 'experience':
-        experienceScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
+        experienceScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
         break;
       case 'project':
-        projectScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start'})
+        projectScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
         break;
       case 'contact':
-        contactScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
+        contactScrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
         break;
       default:
         break;
