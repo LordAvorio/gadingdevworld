@@ -122,7 +122,7 @@ export default function AboutMe({ innerRef }) {
                         </Container>
                         <Container flex={isMobile ? '100%' : '45%'} display='flex' justify='center' margin={isMobile ? '0 0 50px 0' : '0'}>
                             <ImageType01
-                                path='url(src/Assets/Images/GCO-Image.jpg)'
+                                path='url(/Assets/Images/GCO-Image.jpg)'
                                 bbmode='multiply'
                                 bcolor={StyleTheme.colorpalette.green04}
                                 margin={isMobile || isTablet ? '0' : '0 2.5rem'}

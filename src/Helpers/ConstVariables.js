@@ -67,7 +67,7 @@ export const DataMainProjects = [
         title : 'Perbakin Jawa Tengah Admin App',
         description : 'A web application for handling data management in Perbakin based on central java region. Perbakin is official comittee for gun shooting community in Indonesia. This website  have functionality to helping admin managing their data including information members and weapons.',
         technology : ['PHP','JQuery','Bootstrap','MySQL'],
-        image : 'url(src/Assets/Images/perbakin-01.png)',
+        image : 'url(/Assets/Images/perbakin-01.png)',
         linkreferral : [
             {
                 platform : 'misc',
