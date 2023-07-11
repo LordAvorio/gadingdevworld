@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 import styled from 'styled-components'
 
 import { useMediaQuery } from 'react-responsive';
 import { Container } from '../Container/Container.styled'
-import { Typography} from '../Typography/Typography.styled'
+import { Typography } from '../Typography/Typography.styled'
 import { Menu, X } from 'react-feather';
 
 import MenuList from '../NavigationBar/Partial-Components/MenuList'
@@ -13,8 +13,21 @@ import MenuList from '../NavigationBar/Partial-Components/MenuList'
 import { StyleTheme } from '../../Helpers/StyleVariables'
 import { DataNavMenu } from '../../Helpers/ConstVariables'
 
+import { motion } from 'framer-motion'
+import { navBarAnimation } from '../../Helpers/VariantsAnimation'
 
-const SideBarMobile = styled(Container)``;
+const SideBarMobile = styled(Container)`
+  position: relative;
+  animation-name: trigger-navbar;
+  animation-duration: 1s;
+
+  @keyframes trigger-navbar {
+    0% {left: 100vw;}
+    100% {left: 0}
+  }
+
+
+`;
 
 const GlassEffectBackground = styled(Container)`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -23,7 +36,7 @@ const GlassEffectBackground = styled(Container)`
 `
 
 
-export default function NavigationBar({handleScrollRefer}) {
+export default function NavigationBar({ handleScrollRefer }) {
 
   const isMobile = useMediaQuery({ query: `(max-width: ${StyleTheme.resolution.mobile})` });
   const isTablet = useMediaQuery({ query: `(max-width: ${StyleTheme.resolution.tablet})` });
@@ -35,8 +48,8 @@ export default function NavigationBar({handleScrollRefer}) {
   }, [handlingOpenMenu])
 
   const handleScrollReferMobile = (data) => {
-      setHandlingOpenMenu(false)
-      handleScrollRefer(data)
+    setHandlingOpenMenu(false)
+    handleScrollRefer(data)
   }
 
 
@@ -64,37 +77,38 @@ export default function NavigationBar({handleScrollRefer}) {
               </Container>
             ) : (
               <Container display='flex' justify='flex-end'>
-                <Menu fontSize={24} color={StyleTheme.colorpalette.green04} onClick={() => setHandlingOpenMenu(true)} />
+                  <Menu fontSize={24} color={StyleTheme.colorpalette.green04} onClick={() => setHandlingOpenMenu(true)}  />
               </Container>
             )
           }
         </Container>
       </Container>
 
-      <SideBarMobile height='100vh' display={!handlingOpenMenu ? 'none' : 'flex'} >
-        <GlassEffectBackground flex='25%' bgcolor='rgba(255, 255, 255, 0)'></GlassEffectBackground>
-        <Container flex='75%' bgcolor={StyleTheme.colorpalette.blue07} padding='6%'>
-          <Container display='flex' flexwrap='wrap'>
-            <Container flex='100%'>
-              <Container display='flex' flexdirection='row-reverse'>
-                <X size={28} color={StyleTheme.colorpalette.green04} onClick={() => setHandlingOpenMenu(false)}></X>
+    
+        <SideBarMobile height='100vh' display={!handlingOpenMenu ? 'none' : 'flex'} >
+          <GlassEffectBackground flex='25%' bgcolor='rgba(255, 255, 255, 0)'></GlassEffectBackground>
+          <Container flex='75%' bgcolor={StyleTheme.colorpalette.blue07} padding='6%'>
+            <Container display='flex' flexwrap='wrap'>
+              <Container flex='100%'>
+                <Container display='flex' flexdirection='row-reverse'>
+                  <X size={28} color={StyleTheme.colorpalette.green04} onClick={() => setHandlingOpenMenu(false)}></X>
+                </Container>
               </Container>
-            </Container>
-            <Container flex='100%'>
-              <Container display='flex' flexdirection='column' allign='center' padding='25% 0'>
-                {
-                  DataNavMenu.map((item, index) => (
-                    <Container key={index} padding='0 0 18% 0'>
+              <Container flex='100%'>
+                <Container display='flex' flexdirection='column' allign='center' padding='25% 0'>
+                  {
+                    DataNavMenu.map((item, index) => (
+                      <Container key={index} padding='0 0 18% 0'>
                         <Typography ffamily={StyleTheme.font.firacode} padding='0 0 12px 0' fsize={isMobile ? '18px' : '22px'} align='center' color={StyleTheme.colorpalette.green04}>{item.number}</Typography>
-                        <Typography onClick={() => handleScrollReferMobile(item.refercode)} ffamily={StyleTheme.font.roboto} fweight='300' fsize={isMobile ? '20px' : '26px'} color={StyleTheme.colorpalette.white02}>{item.description}</Typography>
-                    </Container>
-                  ))
-                }
+                          <Typography  onClick={() => handleScrollReferMobile(item.refercode)} ffamily={StyleTheme.font.roboto} fweight='300' fsize={isMobile ? '20px' : '26px'} color={StyleTheme.colorpalette.white02}>{item.description}</Typography>
+                      </Container>
+                    ))
+                  }
+                </Container>
               </Container>
             </Container>
           </Container>
-        </Container>
-      </SideBarMobile>
+        </SideBarMobile>
     </>
   )
 }
